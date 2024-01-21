@@ -1,7 +1,19 @@
-export const Card = () => {
+import { ICard } from '../models';
+
+interface CardProps {
+  card: ICard;
+}
+
+export const Card = (props: CardProps) => {
+  const { card } = props;
+  const { id, name, description, like, picture, price } = card;
+
   return (
-    <div className='card' tabIndex={0}>
-      <button className='card-favorite favorite' type='button'>
+    <div className='card' tabIndex={0} id={id}>
+      <button
+        className={`card-favorite favorite ${like ? 'favorite-active' : ''}`}
+        type='button'
+      >
         <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
           <use href='#like' />
         </svg>
@@ -9,15 +21,15 @@ export const Card = () => {
       <div className='img-wrapper'>
         <img
           className='card-img'
-          src='http://localhost:3006'
-          alt='Фото товара.'
-          width='59'
-          height='79'
+          src={picture.path}
+          alt={picture.alt}
+          // width='59'
+          // height='79'
         />
       </div>
-      <p className='card-name'>G Home</p>
-      <span className='card-description'></span>
-      <span className='card-price'>$129</span>
+      <p className='card-name'>{name}</p>
+      <span className='card-description'>{description}</span>
+      <span className='card-price'>{`${price.currency}${price.value}`}</span>
     </div>
   );
 };
