@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Card } from '../Card/Card';
-import { ICard } from '../../globalTypes';
-import { getCards } from '../api';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCards, getCards } from '../../redux/cards';
+import { AppDispatch } from '../../store';
 
 export const Cards = () => {
-  const [cards, setCards] = useState<ICard[]>();
+  const dispatch = useDispatch<AppDispatch>();
+  const cards = useSelector(getCards);
 
   useEffect(() => {
-    getCards().then((res) => {
-      setCards(res.data.content);
-    });
-  }, []);
+    dispatch(fetchCards());
+  }, [dispatch]);
 
   if (!cards?.length) return null;
 
