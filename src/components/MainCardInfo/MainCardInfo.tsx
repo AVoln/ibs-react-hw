@@ -1,27 +1,28 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ICardInfo } from '../../globalTypes';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getCard } from '../api';
 import { BASE_URL } from '../../constants';
 import { Order } from '../Order/Order';
 
 export const MainCardInfo = () => {
-  const location = useLocation();
   const [card, setCard] = useState<ICardInfo>();
-
-  const cardId = useMemo(() => {
-    const [_, id] = location.pathname.split('/');
-
-    return id;
-  }, [location.pathname]);
+  const params = useParams<{ id: string }>();
 
   useEffect(() => {
-    getCard(cardId).then((res) => {
+    if (!params.id) {
+      return;
+    }
+
+    getCard(params.id).then((res) => {
       setCard(res.data.content);
     });
-  }, [cardId]);
+  }, [params.id]);
 
-  if (!card) return null;
+  if (!card) {
+    return null;
+  }
+
   const { id, picture, description, details, info, name } = card;
 
   return (

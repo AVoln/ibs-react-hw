@@ -7,3 +7,7 @@ const getCardsState = (state: RootState) => {
 export const getCards = (state: RootState) => {
   return getCardsState(state).items;
 };
+
+export const getErrorModalOpen = (state: RootState) => {
+  return getCardsState(state).isErrorModalOpen;
+};
