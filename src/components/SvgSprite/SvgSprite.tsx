@@ -27,6 +27,15 @@ export const SvgSprite = () => {
             strokeWidth='2px'
           />
         </g>
+        <g id='minus'>
+          <path d='M19 13H5V11H19V13Z' fill='currentColor' />
+        </g>
+        <g id='plus'>
+          <path
+            d='M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z'
+            fill='currentColor'
+          />
+        </g>
       </defs>
     </svg>
   );

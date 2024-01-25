@@ -1,13 +1,19 @@
-import { Header } from './components/Header';
-import { SvgSprite } from './components/SvgSprite';
-import { Main } from './components/Main';
+import { MainCards } from './components/MainCards';
+import { Route, Routes } from 'react-router-dom';
+import { MainCardInfo } from './components/MainCardInfo/MainCardInfo';
+import { Layout } from './components/Layout';
+import { Modal } from './components/Modal/Modal';
 
 function App() {
   return (
     <>
-      <SvgSprite />
-      <Header />
-      <Main />
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route path='/' element={<MainCards />} />
+          <Route path='/:id' element={<MainCardInfo />} />
+        </Route>
+      </Routes>
+      <Modal />
     </>
   );
 }

@@ -1,0 +1,30 @@
+.favorite {
+  z-index: 2;
+  transition: color 0.1s ease-in-out;
+  color: var(--basicGreyColor);
+  cursor: pointer;
+
+  &:hover svg {
+    fill: var(--hoverColor);
+    color: var(--hoverColor);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active svg {
+    fill: var(--secondPrimaryColor);
+    color: var(--secondPrimaryColor);
+  }
+
+  &:focus-visible svg {
+    fill: var(--hoverColor);
+    color: var(--hoverColor);
+  }
+
+  &-active svg {
+    fill: var(--secondPrimaryColor);
+    color: var(--secondPrimaryColor);
+  }
+}
