@@ -1,11 +1,28 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { getInputValue } from '../../redux/cards/selectors';
+import { AppDispatch } from '../../store';
+import { setInputValue } from '../../redux/cards/reducer';
+
 export const Header = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const inputValue = useSelector(getInputValue);
+  const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputValue(e.target.value));
+  };
+
   return (
     <header>
       <div className='search'>
         <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
           <use href='#search' />
         </svg>
-        <input type='text' id='input' placeholder='Search products' />
+        <input
+          type='text'
+          id='input'
+          placeholder='Search products'
+          value={inputValue}
+          onChange={handleChangeInputValue}
+        />
       </div>
       <div className='account'>
         <button type='button'>

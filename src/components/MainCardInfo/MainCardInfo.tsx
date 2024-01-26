@@ -1,29 +1,30 @@
 import { useParams } from 'react-router-dom';
-import { ICardInfo } from '../../globalTypes';
-import { useEffect, useState } from 'react';
-import { getCard } from '../api';
+import { useEffect } from 'react';
 import { BASE_URL } from '../../constants';
 import { Order } from '../Order/Order';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCardInfo } from '../../redux/cards/selectors';
+import { fetchCardInfo } from '../../redux/cards/thunks';
+import { AppDispatch } from '../../store';
 
 export const MainCardInfo = () => {
-  const [card, setCard] = useState<ICardInfo>();
+  const dispatch = useDispatch<AppDispatch>();
   const params = useParams<{ id: string }>();
+  const cardInfo = useSelector(getCardInfo);
 
   useEffect(() => {
     if (!params.id) {
       return;
     }
 
-    getCard(params.id).then((res) => {
-      setCard(res.data.content);
-    });
-  }, [params.id]);
+    dispatch(fetchCardInfo(params.id));
+  }, [dispatch, params.id]);
 
-  if (!card) {
+  if (!cardInfo) {
     return null;
   }
 
-  const { id, picture, description, details, info, name } = card;
+  const { id, picture, description, name, details, info } = cardInfo;
 
   return (
     <div className='product-container' id={id} key={id}>
@@ -44,7 +45,7 @@ export const MainCardInfo = () => {
           <span className='product-details'>{details}</span>
         </div>
       </div>
-      <Order price={card.price} like={card.like} />
+      <Order price={cardInfo.price} like={cardInfo.like} />
     </div>
   );
 };
