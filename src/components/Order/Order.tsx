@@ -8,7 +8,7 @@ interface OrderProps {
 }
 
 const Order = (props: OrderProps) => {
-  const { price, like } = props;
+  const { price } = props;
   const [count, setCount] = useState(1);
   const [toggleClass, setToggleClass] = useState(false);
 

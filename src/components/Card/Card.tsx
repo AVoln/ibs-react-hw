@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { BASE_URL, CurrencyMap } from '@/constants';
 import { BASE_URL, CurrencyMap } from '../../constants';
 import { ICard } from '../../globalTypes';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +16,9 @@ export const Card = (props: CardProps) => {
 
   const handleLike = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setToggleClass((toggleClass) => !toggleClass);
+    setToggleClass((toggleClass) => {
+      return !toggleClass;
+    });
   };
 
   const handleCardClick = () => {
