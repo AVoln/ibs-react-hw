@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { ICard, ICardInfo } from '../globalTypes';
-import { getUrl } from '../utils/getUrl';
+import { ICard, ICardInfo } from 'Project/globalTypes';
+import { getUrl } from 'Project/utils/getUrl';
 
 export const getCards = () => {
   return axios.get<string, { data: { content: ICard[] } }>(getUrl('/cards'));

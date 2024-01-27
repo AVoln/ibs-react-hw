@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { BASE_URL } from '../../constants';
-import { Order } from '../Order/Order';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCardInfo } from '../../redux/cards/selectors';
-import { fetchCardInfo } from '../../redux/cards/thunks';
-import { AppDispatch } from '../../store';
+import { getCardInfo } from 'Project/redux/cards/selectors';
+import { fetchCardInfo } from 'Project/redux/cards/thunks';
+import { AppDispatch } from 'Project/store';
+import { Order } from 'Project/components/Order/Order';
+import { BASE_URL } from 'Project/constants';
 
 export const MainCardInfo = () => {
   const dispatch = useDispatch<AppDispatch>();

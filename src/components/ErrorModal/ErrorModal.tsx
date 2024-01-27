@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useSelector } from 'react-redux';
-import { getErrorModalOpen } from '../../redux/cards/selectors';
+import { getErrorModalOpen } from 'Project/redux/cards/selectors';
 
 const style = {
   position: 'absolute' as 'absolute',

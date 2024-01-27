@@ -1,5 +1,6 @@
-import { RootState } from '../../store';
-import { toNormalizeValue } from '../../utils/normalize-value';
+import { createSelector } from '@reduxjs/toolkit';
+import { RootState } from 'Project/store';
+import { toNormalizeValue } from 'Project/utils/normalize-value';
 
 const getCardsState = (state: RootState) => {
   return state.cards;
@@ -21,17 +22,32 @@ export const getInputValue = (state: RootState) => {
   return getCardsState(state).inputValue;
 };
 
-export const getCardsByInputValue = (state: RootState) => {
-  const inputValue = getInputValue(state);
-  const cards = getCards(state);
+// export const getCardsByInputValue = (state: RootState) => {
+//   const inputValue = getInputValue(state);
+//   const cards = getCards(state);
 
-  const normalizedValue = toNormalizeValue(inputValue);
+//   const normalizedValue = toNormalizeValue(inputValue);
 
-  const items = cards.filter((card) => {
-    const normalizedName = toNormalizeValue(card.name);
+//   const items = cards.filter((card) => {
+//     const normalizedName = toNormalizeValue(card.name);
 
-    return normalizedName.includes(normalizedValue);
-  });
+//     return normalizedName.includes(normalizedValue);
+//   });
 
-  return items;
-};
+//   return items;
+// };
+
+export const getCardsByInputValue = createSelector(
+  [getInputValue, getCards],
+  (inputValue, cards) => {
+    const normalizedValue = toNormalizeValue(inputValue);
+
+    const items = cards.filter((card) => {
+      const normalizedName = toNormalizeValue(card.name);
+
+      return normalizedName.includes(normalizedValue);
+    });
+
+    return items;
+  }
+);

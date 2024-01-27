@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCard, getCards } from '../../components/api';
-import { setIsErrorModalOpen, storeCards, storeCardInfo } from './reducer';
+import { getCard, getCards } from 'Project/components/api';
+import {
+  setIsErrorModalOpen,
+  storeCards,
+  storeCardInfo,
+} from 'Project/redux/cards/reducer';
 
 export const fetchCards = createAsyncThunk(
   'cards/fetchCards',

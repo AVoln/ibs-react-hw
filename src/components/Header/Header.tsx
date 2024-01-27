@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getInputValue } from '../../redux/cards/selectors';
-import { AppDispatch } from '../../store';
-import { setInputValue } from '../../redux/cards/reducer';
+import { getInputValue } from 'Project/redux/cards/selectors';
+import { AppDispatch } from 'Project/store';
+import { setInputValue } from 'Project/redux/cards/reducer';
 
 export const Header = () => {
   const dispatch = useDispatch<AppDispatch>();

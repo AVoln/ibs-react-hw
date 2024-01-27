@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { Card } from '../Card/Card';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCards } from '../../redux/cards';
-import { AppDispatch } from '../../store';
-import { getCardsByInputValue } from '../../redux/cards/selectors';
+import { fetchCards } from 'Project/redux/cards';
+import { Card } from 'Project/components/Card/Card';
+import { AppDispatch } from 'Project/store';
+import { getCardsByInputValue } from 'Project/redux/cards/selectors';
 
 export const Cards = () => {
   const dispatch = useDispatch<AppDispatch>();

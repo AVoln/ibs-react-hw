@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ICard, ICardInfo } from '../../globalTypes';
+import { ICard, ICardInfo } from 'Project/globalTypes';
 
 interface IInitialCardsState {
   items: ICard[];

@@ -1,8 +1,7 @@
 import { useState } from 'react';
-// import { BASE_URL, CurrencyMap } from '@/constants';
-import { BASE_URL, CurrencyMap } from '../../constants';
-import { ICard } from '../../globalTypes';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL, CurrencyMap } from 'Project/constants';
+import { ICard } from 'Project/globalTypes';
 
 interface CardProps {
   card: ICard;

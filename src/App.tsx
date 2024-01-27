@@ -1,8 +1,8 @@
-import { MainCards } from './components/MainCards';
 import { Route, Routes } from 'react-router-dom';
-import { MainCardInfo } from './components/MainCardInfo/MainCardInfo';
-import { Layout } from './components/Layout';
-import { ErrorModal } from './components/ErrorModal/ErrorModal';
+import { MainCards } from 'Project/components/MainCards';
+import { MainCardInfo } from 'Project/components/MainCardInfo/MainCardInfo';
+import { Layout } from 'Project/components/Layout';
+import { ErrorModal } from 'Project/components/ErrorModal/ErrorModal';
 
 function App() {
   return (

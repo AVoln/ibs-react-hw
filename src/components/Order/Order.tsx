@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { CurrencyMap } from '../../constants';
-import { IPrice } from '../../globalTypes';
+import { CurrencyMap } from 'Project/constants';
+import { IPrice } from 'Project/globalTypes';
 
 interface OrderProps {
   like: boolean;
