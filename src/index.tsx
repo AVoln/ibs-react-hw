@@ -1,9 +1,12 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import App from 'Project/App';
 import { store } from 'Project/store';
+import { ThemeProvider } from 'styled-components';
+import App from 'Project/App';
+import { customTheme } from './customTheme';
 import 'Project/index.scss';
+import 'Project/global.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <ThemeProvider theme={customTheme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </Provider>
 );

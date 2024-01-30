@@ -1,9 +1,12 @@
+import { Container } from '@mui/material';
 import { Cards } from 'Project/components/Cards/Cards';
 
 export const MainCards = () => {
   return (
-    <main className='catalog'>
-      <Cards />
+    <main>
+      <Container maxWidth='lg'>
+        <Cards />
+      </Container>
     </main>
   );
 };

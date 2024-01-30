@@ -320,6 +320,7 @@ module.exports = function (webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
         Project: path.resolve(__dirname, '../src'),
+        '@mui/styled-engine': '@mui/styled-engine-sc',
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).

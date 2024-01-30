@@ -3,6 +3,17 @@ import { getInputValue } from 'Project/redux/cards/selectors';
 import { AppDispatch } from 'Project/store';
 import { setInputValue } from 'Project/redux/cards/reducer';
 
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+
+import { HeaderWrapper } from './components/HeaderWrapper';
+import { IconButtonWrapper } from './components/IconButtonWrapper';
+import { HeaderInner } from './components/HeaderInner';
+import { SearchWrapper } from './components/SearchWrapper';
+import { IconSearchWrapper } from './components/IconSearchWrapper';
+import { TextFieldWrapper } from './components/TextFieldWrapper';
+
 export const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
   const inputValue = useSelector(getInputValue);
@@ -11,43 +22,30 @@ export const Header = () => {
   };
 
   return (
-    <header>
-      <div className='search'>
-        <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
-          <use href='#search' />
-        </svg>
-        <input
-          type='text'
-          id='input'
-          placeholder='Search products'
-          value={inputValue}
-          onChange={handleChangeInputValue}
-        />
-      </div>
-      <div className='account'>
-        <button type='button'>
-          <svg
-            className='account-icon'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-          >
-            <use href='#cart' />
-          </svg>
-        </button>
-        <button type='button'>
-          <svg
-            className='account-icon'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-          >
-            <use href='#account-icon' />
-          </svg>
-        </button>
-      </div>
-    </header>
+    <HeaderWrapper position='static'>
+      <HeaderInner>
+        <SearchWrapper>
+          <IconSearchWrapper color='primary' className='search-icon'>
+            <SearchOutlinedIcon />
+          </IconSearchWrapper>
+          <TextFieldWrapper
+            type='input'
+            id='standard-basic'
+            label='Search products'
+            variant='standard'
+            value={inputValue}
+            onChange={handleChangeInputValue}
+          />
+        </SearchWrapper>
+        <div>
+          <IconButtonWrapper color='primary'>
+            <ShoppingCartOutlinedIcon />
+          </IconButtonWrapper>
+          <IconButtonWrapper color='primary'>
+            <AccountCircleOutlinedIcon />
+          </IconButtonWrapper>
+        </div>
+      </HeaderInner>
+    </HeaderWrapper>
   );
 };

@@ -1,55 +1,55 @@
-.card {
-  position: relative;
-  display: flex;
-  flex: 0 0 15.71rem;
-  min-height: 19.43rem;
-  padding: 1.71rem;
-  border-radius: 0.86rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  text-align: center;
-  color: var(--basicDarkColor);
-  background-color: transparent;
-  transition: background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-  cursor: pointer;
+// .card {
+//   position: relative;
+//   display: flex;
+//   flex: 0 0 15.71rem;
+//   min-height: 19.43rem;
+//   padding: 1.71rem;
+//   border-radius: 0.86rem;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   text-decoration: none;
+//   text-align: center;
+//   color: var(--basicDarkColor);
+//   background-color: transparent;
+//   transition: background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+//   cursor: pointer;
 
-  @media (max-width: 45rem) {
-    flex: 0 0 12rem;
-  }
+//   @media (max-width: 45rem) {
+//     flex: 0 0 12rem;
+//   }
 
-  @media (max-width: 35.71rem) {
-    flex: 0 0 9.3rem;
-  }
+//   @media (max-width: 35.71rem) {
+//     flex: 0 0 9.3rem;
+//   }
 
-  &:hover,
-  &:focus,
-  &:focus-visible {
-    box-shadow: 0.14rem 0.14rem 0.36rem 0rem var(--shadowDarkColor);
-    outline: none;
-    background-color: var(--basicLightGreyColor);
-  }
+//   &:hover,
+//   &:focus,
+//   &:focus-visible {
+//     box-shadow: 0.14rem 0.14rem 0.36rem 0rem var(--shadowDarkColor);
+//     outline: none;
+//     background-color: var(--basicLightGreyColor);
+//   }
 
-  &-favorite {
-    position: absolute;
-    top: 0.57rem;
-    right: 0.57rem;
-  }
+//   &-favorite {
+//     position: absolute;
+//     top: 0.57rem;
+//     right: 0.57rem;
+//   }
 
-  &-img {
-    padding: 2rem 0;
-  }
+//   &-img {
+//     padding: 2rem 0;
+//   }
 
-  &>p {
-    margin: 0;
-    padding: 0.71rem 0 1.42rem 0;
-    font-size: 1.29rem;
-    color: var(--basicDarkColor);
-  }
+//   &>p {
+//     margin: 0;
+//     padding: 0.71rem 0 1.42rem 0;
+//     font-size: 1.29rem;
+//     color: var(--basicDarkColor);
+//   }
 
-  &-price {
-    padding-top: 1rem;
-    color: var(--basicDarkGreyColor);
-  }
-}
+//   &-price {
+//     padding-top: 1rem;
+//     color: var(--basicDarkGreyColor);
+//   }
+// }
