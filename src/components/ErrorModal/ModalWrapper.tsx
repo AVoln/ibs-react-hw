@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { styled } from '@mui/system';
 
 export const ModalWrapper = styled('div')((_) => {
   return {

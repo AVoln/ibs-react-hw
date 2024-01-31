@@ -4,9 +4,11 @@ export const customTheme = createTheme({
   palette: {
     primary: {
       main: '#323232',
+      light: '#959595',
     },
     secondary: {
-      main: '#959595',
+      main: '#e97f03',
+      contrastText: '#ffffff',
     },
   },
   components: {
@@ -22,6 +24,14 @@ export const customTheme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          flexShrink: 0,
+        },
+      },
+    },
+
     MuiCard: {
       styleOverrides: {
         root: {
@@ -31,6 +41,13 @@ export const customTheme = createTheme({
           },
         },
       },
+    },
+  },
+  typography: {
+    button: {
+      fontSize: '1.4rem',
+      fontWeight: '400',
+      textTransform: 'none',
     },
   },
 });

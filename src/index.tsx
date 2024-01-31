@@ -1,11 +1,13 @@
+import { Provider } from 'react-redux';
+
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+
 import { store } from 'Project/store';
-import { ThemeProvider } from 'styled-components';
 import App from 'Project/App';
-import { customTheme } from './customTheme';
-import 'Project/index.scss';
+import { customTheme } from 'Project/customTheme';
+
+import { ThemeProvider } from 'styled-components';
 import 'Project/global.scss';
 
 const root = ReactDOM.createRoot(

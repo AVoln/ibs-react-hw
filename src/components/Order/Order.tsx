@@ -1,6 +1,19 @@
 import { useMemo, useState } from 'react';
+
+import { Button, Typography } from '@mui/material';
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+
 import { CurrencyMap } from 'Project/constants';
 import { IPrice } from 'Project/globalTypes';
+
+import { OrderWrapper } from './component/OrderWrapper';
+import { OrderAddWrapper } from './component/OrderAddWrapper';
+import { CounterWrapper } from './component/CounterWrapper';
+import { CounterButtonWrapper } from './component/CounterButtonWrapper';
+import { CounterValueWrapper } from './component/CounterValueWrapper';
+import { OrderFavoriteWrapper } from './component/OrderFavoriteWrapper';
 
 interface OrderProps {
   like: boolean;
@@ -10,7 +23,7 @@ interface OrderProps {
 const Order = (props: OrderProps) => {
   const { price } = props;
   const [count, setCount] = useState(1);
-  const [toggleClass, setToggleClass] = useState(false);
+  const [currentLike, setCurrentLike] = useState(false);
 
   const handlePlus = () => {
     setCount((prevValue) => {
@@ -27,7 +40,7 @@ const Order = (props: OrderProps) => {
   };
 
   const handleLike = () => {
-    setToggleClass((toggleClass) => !toggleClass);
+    setCurrentLike((toggleClass) => !toggleClass);
   };
 
   const totalPrice = useMemo(() => {
@@ -35,49 +48,32 @@ const Order = (props: OrderProps) => {
   }, [count, price.value]);
 
   return (
-    <div className='order'>
-      <div className='order-price'>{`${
-        CurrencyMap[price.currency]
-      }${totalPrice}`}</div>
-      <div className='add-wrapper'>
-        <div className='counter'>
-          <button
-            className='counter-button counter-button--minus'
-            type='button'
+    <OrderWrapper>
+      <Typography fontSize={'2.57rem'} color={'secondary'}>
+        {`${CurrencyMap[price.currency]}${totalPrice}`}
+      </Typography>
+      <OrderAddWrapper>
+        <CounterWrapper>
+          <CounterButtonWrapper
             onClick={handleMinus}
+            color='secondary'
             disabled={count === 1}
           >
-            <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
-              <use href='#minus' />
-            </svg>
-          </button>
-          <div className='count'>{count}</div>
-          <button
-            className='counter-button counter-button--plus'
-            type='button'
-            onClick={handlePlus}
-          >
-            <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
-              <use href='#plus' />
-            </svg>
-          </button>
-        </div>
-        <div className='order-button'>
-          <button type='button'>Add to cart</button>
-        </div>
-      </div>
-      <button
-        type='button'
-        className={`order-favorite favorite ${
-          toggleClass ? 'favorite-active' : ''
-        }`}
-        onClick={handleLike}
-      >
-        <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
-          <use href='#like' />
-        </svg>
-      </button>
-    </div>
+            <RemoveOutlinedIcon />
+          </CounterButtonWrapper>
+          <CounterValueWrapper>{count}</CounterValueWrapper>
+          <CounterButtonWrapper onClick={handlePlus} color='secondary'>
+            <AddOutlinedIcon />
+          </CounterButtonWrapper>
+        </CounterWrapper>
+        <Button variant='contained' color='secondary' disableElevation>
+          Add to cart
+        </Button>
+      </OrderAddWrapper>
+      <OrderFavoriteWrapper onClick={handleLike} hasLike={currentLike}>
+        <FavoriteTwoToneIcon />
+      </OrderFavoriteWrapper>
+    </OrderWrapper>
   );
 };
 

@@ -22,21 +22,6 @@ export const getInputValue = (state: RootState) => {
   return getCardsState(state).inputValue;
 };
 
-// export const getCardsByInputValue = (state: RootState) => {
-//   const inputValue = getInputValue(state);
-//   const cards = getCards(state);
-
-//   const normalizedValue = toNormalizeValue(inputValue);
-
-//   const items = cards.filter((card) => {
-//     const normalizedName = toNormalizeValue(card.name);
-
-//     return normalizedName.includes(normalizedValue);
-//   });
-
-//   return items;
-// };
-
 export const getCardsByInputValue = createSelector(
   [getInputValue, getCards],
   (inputValue, cards) => {

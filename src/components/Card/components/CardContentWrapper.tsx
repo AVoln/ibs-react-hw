@@ -4,6 +4,7 @@ export const CardContentWrapper = styled('div')((_) => {
   return {
     display: 'flex',
     maxWidth: '15.71rem',
+    height: '100%',
     gap: '1rem',
     padding: '1rem 1rem 1.5rem',
     flexDirection: 'column',

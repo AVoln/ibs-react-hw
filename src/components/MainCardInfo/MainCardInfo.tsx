@@ -1,11 +1,20 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
 import { getCardInfo } from 'Project/redux/cards/selectors';
 import { fetchCardInfo } from 'Project/redux/cards/thunks';
 import { AppDispatch } from 'Project/store';
 import { Order } from 'Project/components/Order/Order';
 import { BASE_URL } from 'Project/constants';
+
+import { Typography } from '@mui/material';
+
+import { CardInfoImgWrapper } from './components/CardInfoImgWrapper';
+import { CardInfoWrapper } from './components/CardInfoWrapper';
+import { CardInfoTextWrapper } from './components/CardInfoTextWrapper';
+import { CardInfoTextInner } from './components/CardInfoTextInner';
+import { CardInfoTitleWrapper } from './components/CardInfoTitleInner';
 
 export const MainCardInfo = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -24,28 +33,37 @@ export const MainCardInfo = () => {
     return null;
   }
 
-  const { id, picture, description, name, details, info } = cardInfo;
+  const { picture, description, name, details, info } = cardInfo;
 
   return (
-    <div className='product-container' id={id} key={id}>
-      <div className='img-container'>
+    <CardInfoWrapper>
+      <CardInfoImgWrapper>
         <img
-          className='product-img'
           src={`${BASE_URL}/${picture.path}`}
           alt={`${BASE_URL}/${picture.alt}`}
           width='150'
           height='200'
         />
+      </CardInfoImgWrapper>
+      <div>
+        <CardInfoTextWrapper>
+          <CardInfoTextInner>
+            <CardInfoTitleWrapper>
+              <Typography variant='h4' fontWeight={500}>
+                {name}
+              </Typography>
+            </CardInfoTitleWrapper>
+            <Typography component='span'>{info}</Typography>
+            <CardInfoTitleWrapper>
+              <Typography variant='h5' fontWeight={500}>
+                {description}
+              </Typography>
+            </CardInfoTitleWrapper>
+            <Typography component='span'>{details}</Typography>
+          </CardInfoTextInner>
+        </CardInfoTextWrapper>
+        <Order price={cardInfo.price} like={cardInfo.like} />
       </div>
-      <div className='product-specification'>
-        <div className='product-text'>
-          <h2 className='product-title'>{name}</h2>
-          <span className='product-info'>{info}</span>
-          <h3 className='product-description'>{description}</h3>
-          <span className='product-details'>{details}</span>
-        </div>
-      </div>
-      <Order price={cardInfo.price} like={cardInfo.like} />
-    </div>
+    </CardInfoWrapper>
   );
 };

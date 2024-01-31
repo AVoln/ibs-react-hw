@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getInputValue } from 'Project/redux/cards/selectors';
-import { AppDispatch } from 'Project/store';
 import { setInputValue } from 'Project/redux/cards/reducer';
+
+import { AppDispatch } from 'Project/store';
 
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -22,7 +23,7 @@ export const Header = () => {
   };
 
   return (
-    <HeaderWrapper position='static'>
+    <HeaderWrapper>
       <HeaderInner>
         <SearchWrapper>
           <IconSearchWrapper color='primary' className='search-icon'>
