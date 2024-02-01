@@ -34,8 +34,6 @@ const cardsReducer = createSlice({
   },
 });
 
-console.log('cardsReducer', cardsReducer);
-
 export const { storeCards, setIsErrorModalOpen, storeCardInfo, setInputValue } =
   cardsReducer.actions;
 export default cardsReducer.reducer;
