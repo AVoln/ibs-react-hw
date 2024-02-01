@@ -33,7 +33,7 @@ export const MainCardInfo = () => {
     return null;
   }
 
-  const { picture, description, name, details, info } = cardInfo;
+  const { picture, description, name, details, info, like, price } = cardInfo;
 
   return (
     <CardInfoWrapper>
@@ -62,7 +62,7 @@ export const MainCardInfo = () => {
             <Typography component='span'>{details}</Typography>
           </CardInfoTextInner>
         </CardInfoTextWrapper>
-        <Order price={cardInfo.price} like={cardInfo.like} />
+        <Order price={price} like={like} />
       </div>
     </CardInfoWrapper>
   );
