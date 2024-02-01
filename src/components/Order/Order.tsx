@@ -23,7 +23,7 @@ interface OrderProps {
 const Order = (props: OrderProps) => {
   const { price } = props;
   const [count, setCount] = useState(1);
-  const [currentLike, setCurrentLike] = useState(false);
+  const [hasLike, setHasLike] = useState<boolean>(false);
 
   const handlePlus = () => {
     setCount((prevValue) => {
@@ -40,7 +40,7 @@ const Order = (props: OrderProps) => {
   };
 
   const handleLike = () => {
-    setCurrentLike((toggleClass) => !toggleClass);
+    setHasLike((toggleClass) => !toggleClass);
   };
 
   const totalPrice = useMemo(() => {
@@ -70,7 +70,7 @@ const Order = (props: OrderProps) => {
           Add to cart
         </Button>
       </OrderAddWrapper>
-      <OrderFavoriteWrapper onClick={handleLike} hasLike={currentLike}>
+      <OrderFavoriteWrapper onClick={handleLike} hasLike={hasLike}>
         <FavoriteTwoToneIcon />
       </OrderFavoriteWrapper>
     </OrderWrapper>

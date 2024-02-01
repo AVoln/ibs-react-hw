@@ -13,19 +13,18 @@ import { IconFavoriteWrapper } from './components/IconFavoriteWrapper';
 import { CardWrapper } from './components/CardWrapper';
 import { CardActionWrapper } from './components/CardActionWrapper';
 
-interface CardProps {
+interface ICardProps {
   card: ICard;
 }
 
-export const Card = (props: CardProps) => {
-  const { card } = props;
+export const Card = ({ card }: ICardProps) => {
   const { id, name, description, like, picture, price } = card;
-  const [currentLike, setCurrentLike] = useState(like);
+  const [hasLike, setHasLike] = useState<boolean>(like);
   const navigate = useNavigate();
 
   const handleLike = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setCurrentLike((prevCurrentLike) => {
+    setHasLike((prevCurrentLike) => {
       return !prevCurrentLike;
     });
   };
@@ -63,7 +62,7 @@ export const Card = (props: CardProps) => {
           </Typography>
         </CardContentWrapper>
       </CardActionWrapper>
-      <IconFavoriteWrapper onClick={handleLike} hasLike={currentLike}>
+      <IconFavoriteWrapper onClick={handleLike} hasLike={hasLike}>
         <FavoriteTwoToneIcon />
       </IconFavoriteWrapper>
     </CardWrapper>
