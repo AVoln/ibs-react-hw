@@ -6,7 +6,7 @@ import { Card } from 'Project/components/Card/Card';
 import { AppDispatch } from 'Project/store';
 import { getCardsByInputValue } from 'Project/redux/cards/selectors';
 
-import { CardsWrapper } from './CardsWrapper';
+import { CardsWrapper } from './Cards.styled';
 
 export const Cards = () => {
   const dispatch = useDispatch<AppDispatch>();

@@ -6,7 +6,7 @@ import { ICard } from 'Project/globalTypes';
 
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
-import { CardWrapper } from './components/CardWrapper';
+import { CardWrapper } from './Card.styled';
 import { IconButton } from '@mui/material';
 
 interface ICardProps {

@@ -9,8 +9,8 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
-import { IconButtonWrapper } from './components/IconButtonWrapper';
-import { HeaderContainer } from './components/HeaderContainer';
+import { HeaderContainer } from './Header.styled';
+import { IconButton } from '@mui/material';
 
 export const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,12 +37,12 @@ export const Header = () => {
         />
       </div>
       <div className='account'>
-        <IconButtonWrapper>
+        <IconButton>
           <ShoppingCartOutlinedIcon />
-        </IconButtonWrapper>
-        <IconButtonWrapper>
+        </IconButton>
+        <IconButton>
           <AccountCircleOutlinedIcon />
-        </IconButtonWrapper>
+        </IconButton>
       </div>
     </HeaderContainer>
   );

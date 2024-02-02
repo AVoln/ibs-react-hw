@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { getErrorModalOpen } from 'Project/redux/cards/selectors';
 
-import { ModalWrapper } from './ModalWrapper';
+import { ModalWrapper } from './ErrorModal.styled';
 
 export function ErrorModal() {
   const isErrorModalOpen = useSelector(getErrorModalOpen);

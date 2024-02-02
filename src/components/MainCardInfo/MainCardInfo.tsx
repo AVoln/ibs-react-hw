@@ -8,7 +8,7 @@ import { AppDispatch } from 'Project/store';
 import { Order } from 'Project/components/Order/Order';
 import { BASE_URL } from 'Project/constants';
 
-import { CardInfoWrapper } from './components/CardInfoWrapper';
+import { CardInfoWrapper } from './MainCardInfo.styled';
 
 export const MainCardInfo = () => {
   const dispatch = useDispatch<AppDispatch>();

@@ -43,5 +43,12 @@ export const HeaderContainer = styled('header')((_) => {
     '&-search-icon': {
       padding: '0.5rem',
     },
+
+    '& > div.account > button': {
+      color: 'var(--basicDarkColor)',
+      '&:hover, &:focus': {
+        color: 'var(--secondPrimaryColor)',
+      },
+    },
   };
 });

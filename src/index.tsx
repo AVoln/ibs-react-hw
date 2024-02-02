@@ -8,7 +8,7 @@ import App from 'Project/App';
 import { customTheme } from 'Project/customTheme';
 
 import { ThemeProvider } from 'styled-components';
-import 'Project/index.scss';
+import 'Project/global.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

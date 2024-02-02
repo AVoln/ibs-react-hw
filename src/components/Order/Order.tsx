@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 
-import { Button } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
@@ -8,9 +8,7 @@ import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import { CurrencyMap } from 'Project/constants';
 import { IPrice } from 'Project/globalTypes';
 
-import { OrderWrapper } from './component/OrderWrapper';
-import { CounterButtonWrapper } from './component/CounterButtonWrapper';
-import { OrderFavoriteWrapper } from './component/OrderFavoriteWrapper';
+import { OrderWrapper } from './Order.styled';
 
 interface IOrderProps {
   like: boolean;
@@ -44,28 +42,25 @@ export const Order = ({ price }: IOrderProps) => {
   }, [count, price.value]);
 
   return (
-    <OrderWrapper>
+    <OrderWrapper hasLike={hasLike}>
       <span className='order-price'>
         {`${CurrencyMap[price.currency]}${totalPrice}`}
       </span>
       <div className='add-wrapper'>
         <div className='counter'>
-          <CounterButtonWrapper
-            onClick={handleMinusClick}
-            disabled={count === 1}
-          >
+          <IconButton onClick={handleMinusClick} disabled={count === 1}>
             <RemoveOutlinedIcon />
-          </CounterButtonWrapper>
+          </IconButton>
           <div className='count'>{count}</div>
-          <CounterButtonWrapper onClick={handlePlusClick}>
+          <IconButton onClick={handlePlusClick}>
             <AddOutlinedIcon />
-          </CounterButtonWrapper>
+          </IconButton>
         </div>
         <Button disableElevation>Add to cart</Button>
       </div>
-      <OrderFavoriteWrapper onClick={handleLikeClick} hasLike={hasLike}>
+      <IconButton className='order-favorite' onClick={handleLikeClick}>
         <FavoriteTwoToneIcon />
-      </OrderFavoriteWrapper>
+      </IconButton>
     </OrderWrapper>
   );
 };

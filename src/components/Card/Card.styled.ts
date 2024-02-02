@@ -1,6 +1,6 @@
 import { styled } from '@mui/system';
 
-type IconWrapperProps = {
+type TFavoriteProps = {
   hasLike: boolean;
 };
 
@@ -8,7 +8,7 @@ export const CardWrapper = styled('div', {
   shouldForwardProp: (prop) => {
     return prop !== 'hasLike';
   },
-})<IconWrapperProps>(({ hasLike }) => {
+})<TFavoriteProps>(({ hasLike }) => {
   return {
     position: 'relative',
 
@@ -20,6 +20,35 @@ export const CardWrapper = styled('div', {
         outline: 'none',
         backgroundColor: 'var(--hoverCardColor)',
         boxShadow: '0.14rem 0.14rem 0.36rem 0 var(--shadowDarkColor)',
+        transition:
+          'background-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out',
+      },
+    },
+
+    '& > div> div.card-image': {
+      maxWidth: '6.36rem',
+      margin: '0 auto',
+      paddingTop: '2rem',
+      textAlign: 'center',
+    },
+
+    '& > div> div.card-content': {
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: '15.71rem',
+      height: '100%',
+      gap: '1rem',
+      padding: '1rem 1rem 1.5rem',
+      alignItems: 'center',
+      alignContent: 'center',
+      textAlign: 'center',
+
+      '& > p': {
+        fontSize: '1.29rem',
+      },
+
+      '& > span': {
+        color: 'var(--basicDarkGreyColor)',
       },
     },
 
@@ -34,7 +63,7 @@ export const CardWrapper = styled('div', {
       color: hasLike ? 'var(--secondPrimaryColor)' : 'inherrit',
 
       '&:hover': {
-        color: 'var(--secondPrimaryColor)',
+        color: 'var(--hoverColor)',
         'svg > path:nth-of-type(1)': {
           opacity: 1,
         },
