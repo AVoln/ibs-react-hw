@@ -6,9 +6,8 @@ import { ICard } from 'Project/globalTypes';
 
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
-import { IconFavoriteWrapper } from './components/IconFavoriteWrapper';
 import { CardWrapper } from './components/CardWrapper';
-import { CardActionWrapper } from './components/CardActionWrapper';
+import { IconButton } from '@mui/material';
 
 interface ICardProps {
   card: ICard;
@@ -35,7 +34,7 @@ export const Card = ({ card }: ICardProps) => {
   }, [navigateToCardInfo]);
 
   const handleCardEnter = useCallback(
-    (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.code === 'Enter') {
         navigateToCardInfo();
       }
@@ -44,8 +43,13 @@ export const Card = ({ card }: ICardProps) => {
   );
 
   return (
-    <CardWrapper>
-      <CardActionWrapper onClick={handleCardClick} onKeyDown={handleCardEnter}>
+    <CardWrapper hasLike={hasLike}>
+      <div
+        className='actions'
+        onClick={handleCardClick}
+        onKeyDown={handleCardEnter}
+        tabIndex={0}
+      >
         <div className='card-image'>
           <img
             src={`${BASE_URL}/${picture.path}`}
@@ -59,10 +63,10 @@ export const Card = ({ card }: ICardProps) => {
           <span>{description}</span>
           <span>{`${CurrencyMap[price.currency]}${price.value}`}</span>
         </div>
-      </CardActionWrapper>
-      <IconFavoriteWrapper onClick={handleLike} hasLike={hasLike}>
+      </div>
+      <IconButton className='favorite' onClick={handleLike}>
         <FavoriteTwoToneIcon />
-      </IconFavoriteWrapper>
+      </IconButton>
     </CardWrapper>
   );
 };

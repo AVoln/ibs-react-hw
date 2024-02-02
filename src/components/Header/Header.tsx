@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getInputValue } from 'Project/redux/cards/selectors';
 import { setInputValue } from 'Project/redux/cards/reducer';
+import { useCallback } from 'react';
 
 import { AppDispatch } from 'Project/store';
 
@@ -9,7 +10,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import { IconButtonWrapper } from './components/IconButtonWrapper';
-import { useCallback } from 'react';
+import { HeaderContainer } from './components/HeaderContainer';
 
 export const Header = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,9 +24,9 @@ export const Header = () => {
   );
 
   return (
-    <header className='header'>
+    <HeaderContainer className='header'>
       <div className='header-search'>
-        <div className='search-icon'>
+        <div className='header-search-icon'>
           <SearchOutlinedIcon />
         </div>
         <input
@@ -43,6 +44,6 @@ export const Header = () => {
           <AccountCircleOutlinedIcon />
         </IconButtonWrapper>
       </div>
-    </header>
+    </HeaderContainer>
   );
 };

@@ -31,17 +31,6 @@ export const customTheme = createTheme({
         },
       },
     },
-
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          boxShadow: 'none',
-          '&:hover, &.Mui-focused': {
-            boxShadow: '0.14rem 0.14rem 0.36rem 0rem var(--shadowDarkColor)',
-          },
-        },
-      },
-    },
   },
   typography: {
     button: {
