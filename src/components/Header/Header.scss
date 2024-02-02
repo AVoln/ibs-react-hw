@@ -3,7 +3,7 @@
   padding: 1.14rem 1.71rem 1.71rem;
   justify-content: space-between;
 
-  &>input {
+  & > input {
     height: 20px;
   }
 
@@ -20,11 +20,11 @@
     }
 
     &:hover,
-    &:focus-within>.search-icon {
+    &:focus-within > .search-icon {
       color: var(--secondPrimaryColor);
     }
 
-    &>input {
+    & > input {
       border: none;
 
       @media (max-width: 25rem) {
@@ -32,15 +32,15 @@
       }
     }
 
-    &>input::placeholder {
+    & > input::placeholder {
       color: var(--basicDarkColor);
     }
 
-    &>input:focus {
+    & > input:focus {
       outline: none;
     }
 
-    &>input:focus::placeholder {
+    & > input:focus::placeholder {
       color: transparent;
     }
   }

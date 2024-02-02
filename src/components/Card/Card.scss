@@ -16,11 +16,11 @@
   align-content: center;
   text-align: center;
 
-  &>p {
+  & > p {
     font-size: 1.29rem;
   }
 
-  &>span {
+  & > span {
     color: var(--basicDarkGreyColor);
   }
 }
