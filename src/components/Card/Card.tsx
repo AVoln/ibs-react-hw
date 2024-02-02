@@ -1,14 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { BASE_URL, CurrencyMap } from 'Project/constants';
 import { ICard } from 'Project/globalTypes';
 
-import { Typography } from '@mui/material';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 
-import { ImgWrapper } from './components/ImgWrapper';
-import { CardContentWrapper } from './components/CardContentWrapper';
 import { IconFavoriteWrapper } from './components/IconFavoriteWrapper';
 import { CardWrapper } from './components/CardWrapper';
 import { CardActionWrapper } from './components/CardActionWrapper';
@@ -22,45 +19,46 @@ export const Card = ({ card }: ICardProps) => {
   const [hasLike, setHasLike] = useState<boolean>(like);
   const navigate = useNavigate();
 
-  const handleLike = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const navigateToCardInfo = useCallback(() => {
+    navigate(`/${id}`);
+  }, [id, navigate]);
+
+  const handleLike = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setHasLike((prevCurrentLike) => {
       return !prevCurrentLike;
     });
-  };
+  }, []);
 
-  const handleCardClick = () => {
-    navigate(`/${id}`);
-  };
+  const handleCardClick = useCallback(() => {
+    navigateToCardInfo();
+  }, [navigateToCardInfo]);
 
-  const handleCardEnter = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    if (e.code === 'Enter') {
-      navigate(`/${id}`);
-    }
-  };
+  const handleCardEnter = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (e.code === 'Enter') {
+        navigateToCardInfo();
+      }
+    },
+    [navigateToCardInfo]
+  );
 
   return (
     <CardWrapper>
       <CardActionWrapper onClick={handleCardClick} onKeyDown={handleCardEnter}>
-        <ImgWrapper>
+        <div className='card-image'>
           <img
             src={`${BASE_URL}/${picture.path}`}
-            alt={`${BASE_URL}/${picture.alt}`}
+            alt={picture.alt}
             width='59'
             height='79'
           />
-        </ImgWrapper>
-        <CardContentWrapper>
-          <Typography align='center' variant='h6' component='p'>
-            {name}
-          </Typography>
-          <Typography align='center' component='span'>
-            {description}
-          </Typography>
-          <Typography align='center' component='span'>
-            {`${CurrencyMap[price.currency]}${price.value}`}
-          </Typography>
-        </CardContentWrapper>
+        </div>
+        <div className='card-content'>
+          <p>{name}</p>
+          <span>{description}</span>
+          <span>{`${CurrencyMap[price.currency]}${price.value}`}</span>
+        </div>
       </CardActionWrapper>
       <IconFavoriteWrapper onClick={handleLike} hasLike={hasLike}>
         <FavoriteTwoToneIcon />

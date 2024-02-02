@@ -8,13 +8,7 @@ import { AppDispatch } from 'Project/store';
 import { Order } from 'Project/components/Order/Order';
 import { BASE_URL } from 'Project/constants';
 
-import { Typography } from '@mui/material';
-
-import { CardInfoImgWrapper } from './components/CardInfoImgWrapper';
 import { CardInfoWrapper } from './components/CardInfoWrapper';
-import { CardInfoTextWrapper } from './components/CardInfoTextWrapper';
-import { CardInfoTextInner } from './components/CardInfoTextInner';
-import { CardInfoTitleWrapper } from './components/CardInfoTitleInner';
 
 export const MainCardInfo = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,11 +16,9 @@ export const MainCardInfo = () => {
   const cardInfo = useSelector(getCardInfo);
 
   useEffect(() => {
-    if (!params.id) {
-      return;
+    if (params.id) {
+      dispatch(fetchCardInfo(params.id));
     }
-
-    dispatch(fetchCardInfo(params.id));
   }, [dispatch, params.id]);
 
   if (!cardInfo) {
@@ -37,31 +29,23 @@ export const MainCardInfo = () => {
 
   return (
     <CardInfoWrapper>
-      <CardInfoImgWrapper>
+      <div className='cardinfo-img-container'>
         <img
           src={`${BASE_URL}/${picture.path}`}
-          alt={`${BASE_URL}/${picture.alt}`}
+          alt={picture.alt}
           width='150'
           height='200'
         />
-      </CardInfoImgWrapper>
+      </div>
       <div>
-        <CardInfoTextWrapper>
-          <CardInfoTextInner>
-            <CardInfoTitleWrapper>
-              <Typography variant='h4' fontWeight={500}>
-                {name}
-              </Typography>
-            </CardInfoTitleWrapper>
-            <Typography component='span'>{info}</Typography>
-            <CardInfoTitleWrapper>
-              <Typography variant='h5' fontWeight={500}>
-                {description}
-              </Typography>
-            </CardInfoTitleWrapper>
-            <Typography component='span'>{details}</Typography>
-          </CardInfoTextInner>
-        </CardInfoTextWrapper>
+        <div className='cardinfo-specification'>
+          <div className='cardinfo-text'>
+            <h2>{name}</h2>
+            <span>{info}</span>
+            <h3>{description}</h3>
+            <span>{details}</span>
+          </div>
+        </div>
         <Order price={price} like={like} />
       </div>
     </CardInfoWrapper>

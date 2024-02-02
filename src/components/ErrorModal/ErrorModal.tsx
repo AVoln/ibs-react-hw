@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getErrorModalOpen } from 'Project/redux/cards/selectors';
 
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 import { ModalWrapper } from './ModalWrapper';
@@ -16,12 +15,10 @@ export function ErrorModal() {
       aria-describedby='modal-modal-description'
     >
       <ModalWrapper>
-        <Typography id='modal-modal-title' variant='h6' component='h2'>
-          Нет ответа от сервера
-        </Typography>
-        <Typography id='modal-modal-description' sx={{ mt: 2 }}>
+        <h2 id='modal-modal-title'>Нет ответа от сервера</h2>
+        <p id='modal-modal-description'>
           Пожалуйста, проверьте связь с интернетом.
-        </Typography>
+        </p>
       </ModalWrapper>
     </Modal>
   );

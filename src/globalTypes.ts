@@ -3,14 +3,8 @@ export interface ICard {
   name: string;
   description: string;
   like: boolean;
-  picture: {
-    path: string;
-    alt: string;
-  };
-  price: {
-    value: number;
-    currency: string;
-  };
+  picture: IPicture;
+  price: IPrice;
 }
 
 export interface ICardInfo {
@@ -19,10 +13,7 @@ export interface ICardInfo {
   description: string;
   info: string;
   details: string;
-  picture: {
-    path: string;
-    alt: string;
-  };
+  picture: IPicture;
   like: boolean;
   price: IPrice;
 }
@@ -30,4 +21,9 @@ export interface ICardInfo {
 export interface IPrice {
   value: number;
   currency: string;
+}
+
+export interface IPicture {
+  path: string;
+  alt: string;
 }

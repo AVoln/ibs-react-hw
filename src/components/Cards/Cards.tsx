@@ -21,7 +21,7 @@ export const Cards = () => {
   return (
     <CardsWrapper>
       {cards.map((card) => (
-        <Card card={card} key={card.id} />
+        <Card key={card.id} card={card} />
       ))}
     </CardsWrapper>
   );

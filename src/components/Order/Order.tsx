@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
@@ -9,39 +9,35 @@ import { CurrencyMap } from 'Project/constants';
 import { IPrice } from 'Project/globalTypes';
 
 import { OrderWrapper } from './component/OrderWrapper';
-import { OrderAddWrapper } from './component/OrderAddWrapper';
-import { CounterWrapper } from './component/CounterWrapper';
 import { CounterButtonWrapper } from './component/CounterButtonWrapper';
-import { CounterValueWrapper } from './component/CounterValueWrapper';
 import { OrderFavoriteWrapper } from './component/OrderFavoriteWrapper';
 
-interface OrderProps {
+interface IOrderProps {
   like: boolean;
   price: IPrice;
 }
 
-const Order = (props: OrderProps) => {
-  const { price } = props;
+export const Order = ({ price }: IOrderProps) => {
   const [count, setCount] = useState(1);
   const [hasLike, setHasLike] = useState<boolean>(false);
 
-  const handlePlus = () => {
+  const handlePlusClick = useCallback(() => {
     setCount((prevValue) => {
       return prevValue + 1;
     });
-  };
+  }, []);
 
-  const handleMinus = () => {
+  const handleMinusClick = useCallback(() => {
     setCount((prevValue) => {
       const result = prevValue - 1;
 
       return result || 1;
     });
-  };
+  }, []);
 
-  const handleLike = () => {
+  const handleLikeClick = useCallback(() => {
     setHasLike((toggleClass) => !toggleClass);
-  };
+  }, []);
 
   const totalPrice = useMemo(() => {
     return price.value * count;
@@ -49,32 +45,27 @@ const Order = (props: OrderProps) => {
 
   return (
     <OrderWrapper>
-      <Typography fontSize={'2.57rem'} color={'secondary'}>
+      <span className='order-price'>
         {`${CurrencyMap[price.currency]}${totalPrice}`}
-      </Typography>
-      <OrderAddWrapper>
-        <CounterWrapper>
+      </span>
+      <div className='add-wrapper'>
+        <div className='counter'>
           <CounterButtonWrapper
-            onClick={handleMinus}
-            color='secondary'
+            onClick={handleMinusClick}
             disabled={count === 1}
           >
             <RemoveOutlinedIcon />
           </CounterButtonWrapper>
-          <CounterValueWrapper>{count}</CounterValueWrapper>
-          <CounterButtonWrapper onClick={handlePlus} color='secondary'>
+          <div className='count'>{count}</div>
+          <CounterButtonWrapper onClick={handlePlusClick}>
             <AddOutlinedIcon />
           </CounterButtonWrapper>
-        </CounterWrapper>
-        <Button variant='contained' color='secondary' disableElevation>
-          Add to cart
-        </Button>
-      </OrderAddWrapper>
-      <OrderFavoriteWrapper onClick={handleLike} hasLike={hasLike}>
+        </div>
+        <Button disableElevation>Add to cart</Button>
+      </div>
+      <OrderFavoriteWrapper onClick={handleLikeClick} hasLike={hasLike}>
         <FavoriteTwoToneIcon />
       </OrderFavoriteWrapper>
     </OrderWrapper>
   );
 };
-
-export { Order };

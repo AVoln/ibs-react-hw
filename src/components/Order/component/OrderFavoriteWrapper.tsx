@@ -11,11 +11,11 @@ export const OrderFavoriteWrapper = styled(IconButton, {
   },
 })<IconWrapperProps>(({ hasLike }) => {
   return {
-    '@media (max-width: 34rem)': {
+    '@media (max-width: 35rem)': {
       position: 'absolute',
       top: 0,
       right: 0,
-      transform: 'translateY(20%) translateX(-40%)',
+      transform: 'translateY(70%) translateX(-40%)',
     },
     'svg > path:nth-of-type(1)': {
       opacity: hasLike ? 1 : 0,
