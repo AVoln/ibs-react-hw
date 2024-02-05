@@ -42,7 +42,7 @@ export const Order = ({ price }: IOrderProps) => {
   }, [count, price.value]);
 
   return (
-    <OrderWrapper hasLike={hasLike}>
+    <OrderWrapper className={hasLike ? 'has-like' : ''}>
       <span className='order-price'>
         {`${CurrencyMap[price.currency]}${totalPrice}`}
       </span>

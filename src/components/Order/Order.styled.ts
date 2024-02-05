@@ -1,14 +1,6 @@
 import { styled } from '@mui/system';
 
-type TFavoriteProps = {
-  hasLike: boolean;
-};
-
-export const OrderWrapper = styled('div', {
-  shouldForwardProp: (prop) => {
-    return prop !== 'hasLike';
-  },
-})<TFavoriteProps>(({ hasLike }) => {
+export const OrderWrapper = styled('div')((_) => {
   return {
     position: 'relative',
     display: 'flex',
@@ -95,15 +87,27 @@ export const OrderWrapper = styled('div', {
       },
 
       'svg > path:nth-of-type(1)': {
-        opacity: hasLike ? 1 : 0,
+        opacity: 0,
       },
 
-      color: hasLike ? 'var(--secondPrimaryColor)' : 'inherrit',
+      color: 'inherrit',
 
       '&:hover': {
         color: 'var(--hoverColor)',
         'svg > path:nth-of-type(1)': {
           opacity: 1,
+        },
+      },
+    },
+
+    '&.has-like': {
+      '& > button.order-favorite': {
+        color: 'var(--secondPrimaryColor)',
+        transition: 'color 0.1s ease-in-out',
+
+        '&  > svg > path:nth-of-type(1)': {
+          opacity: 1,
+          transition: 'opacity 0.1s ease-in-out',
         },
       },
     },

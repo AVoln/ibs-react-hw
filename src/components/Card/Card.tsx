@@ -43,7 +43,7 @@ export const Card = ({ card }: ICardProps) => {
   );
 
   return (
-    <CardWrapper hasLike={hasLike}>
+    <CardWrapper className={hasLike ? 'has-like' : ''}>
       <div
         className='actions'
         onClick={handleCardClick}

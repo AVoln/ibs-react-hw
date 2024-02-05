@@ -6,9 +6,7 @@ export const HeaderContainer = styled('header')((_) => {
     padding: '1.14rem 1.71rem 1.71rem',
     justifyContent: 'space-between',
 
-    '& > input': { height: '20px' },
-
-    '.header-search': {
+    '& > .header-search': {
       display: 'flex',
       alignItems: 'center',
       borderBottom: '0.14rem solid transparent',
@@ -24,19 +22,21 @@ export const HeaderContainer = styled('header')((_) => {
       },
 
       '& > input': {
+        height: '20px',
         border: 'none',
         '@media (max-width: 25rem)': { width: '9.1rem' },
-      },
 
-      '& > input::placeholder': {
-        color: 'var(--basicDarkColor)',
-      },
+        '&::placeholder': {
+          color: 'var(--basicDarkColor)',
+        },
 
-      '& > input:focus': {
-        outline: 'none',
-      },
-      '& > input:focus::placeholder': {
-        color: 'transparent',
+        '&:focus': {
+          outline: 'none',
+
+          '&::placeholder': {
+            color: 'transparent',
+          },
+        },
       },
     },
 

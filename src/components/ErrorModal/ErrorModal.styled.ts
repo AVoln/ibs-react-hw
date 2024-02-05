@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 
 export const ModalWrapper = styled(Modal)((_) => {
   return {
-    'div.modal-text': {
+    '& > div.modal-text': {
       position: 'absolute',
       top: '50%',
       left: '50%',
