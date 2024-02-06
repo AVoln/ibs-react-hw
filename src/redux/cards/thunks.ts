@@ -1,13 +1,13 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCard, getCards } from 'Project/components/api';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getCard, getCards } from "Project/components/api";
 import {
   setIsErrorModalOpen,
   storeCards,
   storeCardInfo,
-} from 'Project/redux/cards/reducer';
+} from "Project/redux/cards/reducer";
 
 export const fetchCards = createAsyncThunk(
-  'cards/fetchCards',
+  "cards/fetchCards",
   (_, thunkApi) => {
     const { dispatch } = thunkApi;
 
@@ -22,7 +22,7 @@ export const fetchCards = createAsyncThunk(
 );
 
 export const fetchCardInfo = createAsyncThunk(
-  'cards/fetchCardInfo',
+  "cards/fetchCardInfo",
   (id: string, thunkApi) => {
     const { dispatch } = thunkApi;
 

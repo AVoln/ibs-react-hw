@@ -1,14 +1,14 @@
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-import { getCardInfo } from 'Project/redux/cards/selectors';
-import { fetchCardInfo } from 'Project/redux/cards/thunks';
-import { AppDispatch } from 'Project/store';
-import { Order } from 'Project/components/Order/Order';
-import { BASE_URL } from 'Project/constants';
+import { getCardInfo } from "Project/redux/cards/selectors";
+import { fetchCardInfo } from "Project/redux/cards/thunks";
+import { AppDispatch } from "Project/store";
+import { Order } from "Project/components/Order/Order";
+import { BASE_URL } from "Project/constants";
 
-import { CardInfoWrapper } from './MainCardInfo.styled';
+import { CardInfoWrapper } from "./MainCardInfo.styled";
 
 export const MainCardInfo = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,17 +29,17 @@ export const MainCardInfo = () => {
 
   return (
     <CardInfoWrapper>
-      <div className='cardinfo-img-container'>
+      <div className="cardinfo-img-container">
         <img
           src={`${BASE_URL}/${picture.path}`}
           alt={picture.alt}
-          width='150'
-          height='200'
+          width="150"
+          height="200"
         />
       </div>
       <div>
-        <div className='cardinfo-specification'>
-          <div className='cardinfo-text'>
+        <div className="cardinfo-specification">
+          <div className="cardinfo-text">
             <h2>{name}</h2>
             <span>{info}</span>
             <h3>{description}</h3>

@@ -1,6 +1,6 @@
 export const toNormalizeValue = (value: string) => {
   if (!value) {
-    return '';
+    return "";
   }
 
   return value.trim().toLowerCase();

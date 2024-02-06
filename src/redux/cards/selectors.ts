@@ -1,6 +1,6 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from 'Project/store';
-import { toNormalizeValue } from 'Project/utils/normalize-value';
+import { createSelector } from "@reduxjs/toolkit";
+import { RootState } from "Project/store";
+import { toNormalizeValue } from "Project/utils/normalize-value";
 
 const getCardsState = (state: RootState) => {
   return state.cards;

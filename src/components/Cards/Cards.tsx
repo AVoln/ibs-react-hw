@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-import { fetchCards } from 'Project/redux/cards';
-import { Card } from 'Project/components/Card/Card';
-import { AppDispatch } from 'Project/store';
-import { getCardsByInputValue } from 'Project/redux/cards/selectors';
+import { fetchCards } from "Project/redux/cards";
+import { Card } from "Project/components/Card/Card";
+import { AppDispatch } from "Project/store";
+import { getCardsByInputValue } from "Project/redux/cards/selectors";
 
-import { CardsWrapper } from './Cards.styled';
+import { CardsWrapper } from "./Cards.styled";
 
 export const Cards = () => {
   const dispatch = useDispatch<AppDispatch>();

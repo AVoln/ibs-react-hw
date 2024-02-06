@@ -1,14 +1,15 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from "react";
+import classNames from "classnames";
 
-import { Button, IconButton } from '@mui/material';
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+import { Button, IconButton } from "@mui/material";
+import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 
-import { CurrencyMap } from 'Project/constants';
-import { IPrice } from 'Project/globalTypes';
+import { CurrencyMap } from "Project/constants";
+import { IPrice } from "Project/globalTypes";
 
-import { OrderWrapper } from './Order.styled';
+import { OrderWrapper } from "./Order.styled";
 
 interface IOrderProps {
   like: boolean;
@@ -41,24 +42,28 @@ export const Order = ({ price }: IOrderProps) => {
     return price.value * count;
   }, [count, price.value]);
 
+  const hasLikeClass = classNames({
+    "has-like": hasLike,
+  });
+
   return (
-    <OrderWrapper className={hasLike ? 'has-like' : ''}>
-      <span className='order-price'>
+    <OrderWrapper className={hasLikeClass}>
+      <span className="order-price">
         {`${CurrencyMap[price.currency]}${totalPrice}`}
       </span>
-      <div className='add-wrapper'>
-        <div className='counter'>
+      <div className="add-wrapper">
+        <div className="counter">
           <IconButton onClick={handleMinusClick} disabled={count === 1}>
             <RemoveOutlinedIcon />
           </IconButton>
-          <div className='count'>{count}</div>
+          <div className="count">{count}</div>
           <IconButton onClick={handlePlusClick}>
             <AddOutlinedIcon />
           </IconButton>
         </div>
         <Button disableElevation>Add to cart</Button>
       </div>
-      <IconButton className='order-favorite' onClick={handleLikeClick}>
+      <IconButton className="order-favorite" onClick={handleLikeClick}>
         <FavoriteTwoToneIcon />
       </IconButton>
     </OrderWrapper>

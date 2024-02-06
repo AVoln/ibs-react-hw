@@ -1,13 +1,15 @@
-import { useNavigate } from 'react-router-dom';
-import { useCallback, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useCallback, useState } from "react";
 
-import { BASE_URL, CurrencyMap } from 'Project/constants';
-import { ICard } from 'Project/globalTypes';
+import classNames from "classnames";
 
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
+import { BASE_URL, CurrencyMap } from "Project/constants";
+import { ICard } from "Project/globalTypes";
 
-import { CardWrapper } from './Card.styled';
-import { IconButton } from '@mui/material';
+import { IconButton } from "@mui/material";
+import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
+
+import { CardWrapper } from "./Card.styled";
 
 interface ICardProps {
   card: ICard;
@@ -35,36 +37,40 @@ export const Card = ({ card }: ICardProps) => {
 
   const handleCardEnter = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
-      if (e.code === 'Enter') {
+      if (e.code === "Enter") {
         navigateToCardInfo();
       }
     },
     [navigateToCardInfo]
   );
 
+  // const hasLikeClass = classNames({
+  //   'has-like': hasLike,
+  // });
+
   return (
-    <CardWrapper className={hasLike ? 'has-like' : ''}>
+    <CardWrapper className={classNames({ "has-like": hasLike })}>
       <div
-        className='actions'
+        className="actions"
         onClick={handleCardClick}
         onKeyDown={handleCardEnter}
         tabIndex={0}
       >
-        <div className='card-image'>
+        <div className="card-image">
           <img
             src={`${BASE_URL}/${picture.path}`}
             alt={picture.alt}
-            width='59'
-            height='79'
+            width="59"
+            height="79"
           />
         </div>
-        <div className='card-content'>
+        <div className="card-content">
           <p>{name}</p>
           <span>{description}</span>
           <span>{`${CurrencyMap[price.currency]}${price.value}`}</span>
         </div>
       </div>
-      <IconButton className='favorite' onClick={handleLike}>
+      <IconButton className="favorite" onClick={handleLike}>
         <FavoriteTwoToneIcon />
       </IconButton>
     </CardWrapper>

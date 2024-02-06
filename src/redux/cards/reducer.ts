@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ICard, ICardInfo } from 'Project/globalTypes';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ICard, ICardInfo } from "Project/globalTypes";
 
 interface IInitialCardsState {
   items: ICard[];
@@ -12,11 +12,11 @@ const initialState: IInitialCardsState = {
   items: [],
   item: null,
   isErrorModalOpen: false,
-  inputValue: '',
+  inputValue: "",
 };
 
 const cardsReducer = createSlice({
-  name: 'cards',
+  name: "cards",
   initialState,
   reducers: {
     storeCards: (state, action: PayloadAction<ICard[]>) => {
